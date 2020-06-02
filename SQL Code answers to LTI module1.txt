@@ -1,0 +1,61 @@
+1) select Emplyee_ID, First_Name, Last_Name,Salary, Job_ID, Hire_Date 
+from Employees 
+where Department_ID in (select Department_ID from Departments where Department_ID =50);
+
+2)select Job_ID 
+from Jobs 
+where Job_ID not in(select Job_ID from Employees);
+
+3) select Employee_ID||','||First_Name||','||Last_Name||','||Salary||','||Email_ID||','||Job_ID||','||Hire_Date||','||
+Department_ID||','||Manager_ID||','|| 
+from Employees;
+
+4)SELECT Employee_ID, Last_Name, Hire_Date 
+FROM Employees 
+WHERE Hire_Date LIKE '2010%';
+
+5)select Employee_ID, Last_Name, Hire_Date
+from Employees
+where Manager_ID IS NULL;
+
+6)select Employee_ID, Last_Name, Job_ID, Hire_Date
+from Employees 
+where Last_Name LIKE '__a%';
+
+7)select Employee_ID, Last_Name, Job_ID, Hire_Date
+from Employees 
+where Last_Name LIKE '__a%' and Last_Name LIKE '__e%';
+
+8)select Employee_ID, Last_Name, Job_Id, Salary, Hire_Date 
+from Employees
+where Department_ID in
+(select Department_ID from Departments IN(20,50,80));
+
+9)select Employee_ID, Last_Name, Job_ID, Salary, Hire_Date
+from Employees
+where Salary BETWEEN 5000 AND 15000;
+
+10.1)select Employee_ID, Last_Name, Salary, Department_ID
+from Employees
+UNION 
+Select Department_Name from Departments
+where Department_ID=50;
+
+10.2)select Employee_ID, Last_Name, Salary, Job_ID, Department_ID, Job_Title 
+from Employees
+where Department_ID in (select Department_ID from Departments where Department_ID = 50);
+
+11) select e.Last_Name,e.Hire_Date,
+a.Last_Name, a.hire_Date
+from Employees e and Employees a
+where e.Manager_ID = a.Employee_ID
+AND e.Hire_Date < a.Hire_Date;
+
+
+19) Select employee_id, last_name, hire_date 
+From employees 
+Where dept_id = 
+(Select dept_id 
+From employees 
+Where first_name =‘Jack’) 
+And first_name <> ‘jack’;  
